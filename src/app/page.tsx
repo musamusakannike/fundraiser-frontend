@@ -1,4 +1,5 @@
 import AboutUs from '@/components/LandingPage/AboutUs';
+import ActiveCampaigns from '@/components/LandingPage/ActiveCampaigns';
 import Hero from '@/components/LandingPage/Hero';
 import React from 'react'
 
@@ -7,6 +8,7 @@ const Home = () => {
     <div>
       <Hero />
       <AboutUs />
+      <ActiveCampaigns />
     </div>
   )
 }

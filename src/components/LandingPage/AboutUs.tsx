@@ -44,7 +44,7 @@ const AboutUs: React.FC = () => {
                             <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/70 to-transparent"></div>
                             <div className="absolute bottom-0 left-0 p-6">
                                 <h3 className="text-white text-2xl font-bold">Our Mission</h3>
-                                <p className="text-emerald-50 mt-2">Supporting communities since 2015</p>
+                                <p className="text-emerald-50 mt-2">Supporting communities since 2024</p>
                             </div>
                         </div>
                     </div>
