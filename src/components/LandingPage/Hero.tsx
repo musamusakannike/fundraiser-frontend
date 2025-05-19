@@ -76,9 +76,11 @@ const Hero = () => {
                 <ChevronRight className="w-4 h-4 opacity-70" />
               </Button>
             </Link>
-            <Button variant="outline" className="border-2 border-emerald-600 text-emerald-700 hover:bg-emerald-50 px-8 py-6 text-lg rounded-xl shadow-md transition-all duration-300 transform hover:scale-105">
-              Learn More
-            </Button>
+            <Link href={"#about"}>
+              <Button variant="outline" className="border-2 border-emerald-600 text-emerald-700 hover:bg-emerald-50 px-8 py-6 text-lg rounded-xl shadow-md transition-all duration-300 transform hover:scale-105">
+                Learn More
+              </Button>
+            </Link>
           </div>
         </div>
 
