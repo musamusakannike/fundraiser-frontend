@@ -2,15 +2,18 @@
 import React, { useState, useEffect } from 'react';
 import { Globe, HandHeart, Users, ChevronRight, Heart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useAuth } from '@/contexts/authContext';
+import Link from 'next/link';
 
 const Hero = () => {
+  const { token } = useAuth();
   const [scrolled, setScrolled] = useState(false);
-  
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
-    
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -18,12 +21,12 @@ const Hero = () => {
   return (
     <div className="relative overflow-hidden bg-gradient-to-b from-emerald-50 to-white min-h-screen flex flex-col justify-center">
       {/* Enhanced Islamic pattern overlay with parallax effect */}
-      <div 
+      <div
         className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MCIgaGVpZ2h0PSI4MCI+CiAgPHJlY3Qgd2lkdGg9IjgwIiBoZWlnaHQ9IjgwIiBmaWxsPSJub25lIj48L3JlY3Q+CiAgPHBhdGggZD0iTTAgMGg4MHY4MEgweiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDk5MDZkIiBzdHJva2Utb3BhY2l0eT0iMC4wNSIgc3Ryb2tlLXdpZHRoPSIxIj48L3BhdGg+CiAgPGNpcmNsZSBjeD0iNDAiIGN5PSI0MCIgcj0iMzgiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzA5OTA2ZCIgc3Ryb2tlLW9wYWNpdHk9IjAuMDUiIHN0cm9rZS13aWR0aD0iMC41Ij48L2NpcmNsZT4KICA8Y2lyY2xlIGN4PSI0MCIgY3k9IjQwIiByPSIzMiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDk5MDZkIiBzdHJva2Utb3BhY2l0eT0iMC4wOCIgc3Ryb2tlLXdpZHRoPSIwLjUiPjwvY2lyY2xlPgogIDxjaXJjbGUgY3g9IjQwIiBjeT0iNDAiIHI9IjI2IiBmaWxsPSJub25lIiBzdHJva2U9IiMwOTkwNmQiIHN0cm9rZS1vcGFjaXR5PSIwLjA4IiBzdHJva2Utd2lkdGg9IjAuNSI+PC9jaXJjbGU+CiAgPGNpcmNsZSBjeD0iNDAiIGN5PSI0MCIgcj0iMjAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzA5OTA2ZCIgc3Ryb2tlLW9wYWNpdHk9IjAuMDgiIHN0cm9rZS13aWR0aD0iMC41Ij48L2NpcmNsZT4KICA8Y2lyY2xlIGN4PSI0MCIgY3k9IjQwIiByPSIxNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDk5MDZkIiBzdHJva2Utb3BhY2l0eT0iMC4wOCIgc3Ryb2tlLXdpZHRoPSIwLjUiPjwvY2lyY2xlPgogIDxjaXJjbGUgY3g9IjQwIiBjeT0iNDAiIHI9IjgiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzA5OTA2ZCIgc3Ryb2tlLW9wYWNpdHk9IjAuMDgiIHN0cm9rZS13aWR0aD0iMC41Ij48L2NpcmNsZT4KPC9zdmc+Cg==')] opacity-30 bg-repeat"
         style={{ transform: scrolled ? 'translateY(10px)' : 'translateY(0)', transition: 'transform 0.5s ease-out' }}
         aria-hidden="true"
       ></div>
-      
+
       {/* Subtle animated gradient circles */}
       <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-br from-emerald-200 to-emerald-300 rounded-full opacity-10 blur-3xl animate-pulse" style={{ animationDuration: '7s' }}></div>
       <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-tl from-emerald-300 to-teal-200 rounded-full opacity-10 blur-3xl animate-pulse" style={{ animationDuration: '10s' }}></div>
@@ -40,13 +43,13 @@ const Hero = () => {
               </div>
             </div>
           </div>
-          
+
           {/* Heading with enhanced typography */}
           <h1 className="text-4xl font-extrabold tracking-tighter text-emerald-950 sm:text-5xl md:text-6xl lg:text-7xl">
             <span className="block bg-gradient-to-r from-emerald-800 to-emerald-600 bg-clip-text text-transparent">Your Advocate</span>
             <span className="block mt-3 text-emerald-500 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light">Your voice, Their hope</span>
           </h1>
-          
+
           {/* Separator design element */}
           <div className="relative flex justify-center my-8">
             <div className="absolute inset-0 flex items-center">
@@ -58,7 +61,7 @@ const Hero = () => {
               </div>
             </div>
           </div>
-          
+
           {/* Enhanced description */}
           <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-600 sm:text-xl leading-relaxed">
             Join our mission to provide essential support and resources to those in need within our community and around the world. Together, we can create lasting change.
@@ -66,11 +69,13 @@ const Hero = () => {
 
           {/* Enhanced CTA Buttons */}
           <div className="mt-10 flex flex-col sm:flex-row justify-center gap-5">
-            <Button className="bg-gradient-to-br from-emerald-600 to-emerald-800 hover:from-emerald-700 hover:to-emerald-900 text-white px-8 py-6 text-lg rounded-xl shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center gap-3">
-              <HandHeart className="w-5 h-5" />
-              <span>Donate Now</span>
-              <ChevronRight className="w-4 h-4 opacity-70" />
-            </Button>
+            <Link href={`${token ? "/dashboard" : "/login"}`}>
+              <Button className="bg-gradient-to-br from-emerald-600 to-emerald-800 hover:from-emerald-700 hover:to-emerald-900 text-white px-8 py-6 text-lg rounded-xl shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center gap-3">
+                <HandHeart className="w-5 h-5" />
+                <span>Donate Now</span>
+                <ChevronRight className="w-4 h-4 opacity-70" />
+              </Button>
+            </Link>
             <Button variant="outline" className="border-2 border-emerald-600 text-emerald-700 hover:bg-emerald-50 px-8 py-6 text-lg rounded-xl shadow-md transition-all duration-300 transform hover:scale-105">
               Learn More
             </Button>
@@ -83,7 +88,7 @@ const Hero = () => {
           <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
             <div className="w-20 h-1 bg-gradient-to-r from-transparent via-emerald-500 to-transparent rounded-full"></div>
           </div>
-          
+
           <div className="bg-white bg-opacity-80 backdrop-blur-sm rounded-2xl shadow-xl p-8 border border-emerald-100">
             <div className="grid grid-cols-1 gap-10 sm:grid-cols-3">
               <div className="flex flex-col items-center transition-transform duration-300 hover:transform hover:scale-105">
@@ -96,7 +101,7 @@ const Hero = () => {
                 <p className="mt-6 text-4xl font-bold bg-gradient-to-br from-emerald-800 to-emerald-600 bg-clip-text text-transparent">₦250K+</p>
                 <p className="mt-2 text-base text-gray-600 font-medium">Funds Raised</p>
               </div>
-              
+
               <div className="flex flex-col items-center transition-transform duration-300 hover:transform hover:scale-105">
                 <div className="relative">
                   <div className="absolute inset-0 bg-emerald-200 rounded-full blur-sm transform scale-110"></div>
@@ -107,7 +112,7 @@ const Hero = () => {
                 <p className="mt-6 text-4xl font-bold bg-gradient-to-br from-emerald-800 to-emerald-600 bg-clip-text text-transparent">15K+</p>
                 <p className="mt-2 text-base text-gray-600 font-medium">Lives Impacted</p>
               </div>
-              
+
               <div className="flex flex-col items-center transition-transform duration-300 hover:transform hover:scale-105">
                 <div className="relative">
                   <div className="absolute inset-0 bg-emerald-200 rounded-full blur-sm transform scale-110"></div>
