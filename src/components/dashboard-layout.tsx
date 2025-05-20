@@ -15,17 +15,11 @@ interface DashboardLayoutProps {
 }
 
 const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
-  const { user, token, logout } = useAuth()
+  const { user, token, logout, loading } = useAuth()
   const router = useRouter()
   const pathname = usePathname()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [unreadNotifications, setUnreadNotifications] = useState(0)
-
-  useEffect(() => {
-    if (!token) {
-      router.push("/login")
-    }
-  }, [token, router])
 
   useEffect(() => {
     const fetchUnreadNotifications = async () => {
@@ -87,6 +81,10 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
   const superAdminNavItems = [
     { name: "Manage Admins", href: "/dashboard/admin/admins", icon: <Users className="h-5 w-5" /> },
   ]
+
+  if (loading) {
+    return null // Or a loading spinner if you prefer
+  }
 
   if (!user) {
     return null // Or a loading spinner
