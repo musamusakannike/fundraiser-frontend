@@ -70,7 +70,6 @@ const NewApplicationPage = () => {
         console.log("Submitting application...")
 
         if (!token) {
-            console.error("User is not authenticated")
             toast({
                 title: "Error",
                 description: "You must be logged in to submit an application",
@@ -80,7 +79,6 @@ const NewApplicationPage = () => {
         }
 
         if (!title || !description || !fullName || !email) {
-            console.error("Missing required fields")
             toast({
                 title: "Error",
                 description: "Please fill in all required fields",
@@ -132,12 +130,12 @@ const NewApplicationPage = () => {
                 })
             }
         } catch (error) {
-            console.error("Error submitting application:", error)
             toast({
                 title: "Error",
                 description: "Failed to submit application",
                 variant: "destructive",
             })
+            console.error(error)
         } finally {
             setSubmitting(false)
         }
