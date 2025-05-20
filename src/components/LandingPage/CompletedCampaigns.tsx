@@ -1,8 +1,9 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import { SERVER_URL } from '@/constants';
-import { CheckCircle, Clock, Award, BookOpen, Loader2, ChevronRight, Calendar, Users } from 'lucide-react';
+import { CheckCircle, Award, Loader2, ChevronRight, Calendar, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import Image from 'next/image';
 
 // Define types for campaign and state
 interface Campaign {
@@ -154,7 +155,7 @@ const CompletedCampaigns = () => {
                     <h2 className="text-3xl md:text-4xl font-bold text-teal-900 mb-4">Our Success Stories</h2>
                     <div className="max-w-3xl mx-auto">
                         <p className="text-gray-600 text-lg">
-                            See the impact we've made together. These campaigns have successfully reached their goals and made a lasting difference.
+                            See the impact we&apos;ve made together. These campaigns have successfully reached their goals and made a lasting difference.
                         </p>
                     </div>
                 </div>
@@ -167,7 +168,7 @@ const CompletedCampaigns = () => {
                         </div>
                         <h3 className="text-xl font-medium text-gray-800 mb-2">No Completed Campaigns Yet</h3>
                         <p className="text-gray-600">
-                            We're still working on our active campaigns. Check back later to see our success stories.
+                            We&apos;re still working on our active campaigns. Check back later to see our success stories.
                         </p>
                     </div>
                 ) : (
@@ -188,10 +189,12 @@ const CompletedCampaigns = () => {
                                                         className={`absolute inset-0 transition-opacity duration-500 ${index === activeSlide[campaign._id] ? 'opacity-100' : 'opacity-0'
                                                             }`}
                                                     >
-                                                        <img
+                                                        <Image
                                                             src={image}
                                                             alt={`${campaign.title} - image ${index + 1}`}
                                                             className="w-full h-full object-cover"
+                                                            width={500}
+                                                            height={300}
                                                         />
 
                                                         {/* Success overlay */}

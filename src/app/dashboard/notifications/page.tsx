@@ -275,7 +275,7 @@ const NotificationsPage = () => {
             </div>
             <h3 className="text-lg font-medium mb-2">No notifications</h3>
             <p className="text-gray-500 max-w-md mx-auto">
-              You don't have any notifications at the moment. We'll notify you when there are updates on your
+              You don&apos;t have any notifications at the moment. We&apos;ll notify you when there are updates on your
               applications or campaigns.
             </p>
           </div>

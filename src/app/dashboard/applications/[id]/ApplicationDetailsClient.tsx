@@ -174,7 +174,7 @@ export default function ApplicationDetailsClient({ id }: Props) {
         <div className="text-center py-12">
           <AlertTriangle className="h-12 w-12 text-yellow-500 mx-auto mb-4" />
           <h2 className="text-2xl font-bold mb-2">Application Not Found</h2>
-          <p className="text-gray-500 mb-6">The application you're looking for doesn't exist or has been removed.</p>
+          <p className="text-gray-500 mb-6">The application you&apos;re looking for doesn&apos;t exist or has been removed.</p>
           <Link href="/dashboard/applications">
             <Button>Back to Applications</Button>
           </Link>

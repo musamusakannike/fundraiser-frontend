@@ -43,7 +43,7 @@ const CTA = () => {
                 </div>
 
                 <p className="mt-10 text-emerald-200 font-light italic">
-                    "The believer's shade on the Day of Resurrection will be their charity" — Prophet Muhammad (PBUH)
+                    &quot;The believer&apos;s shade on the Day of Resurrection will be their charity&quot; — Prophet Muhammad (PBUH)
                 </p>
             </div>
         </section>

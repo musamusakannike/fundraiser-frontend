@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { useAuth } from "@/contexts/authContext"
 import { useRouter, usePathname } from "next/navigation"
 import Link from "next/link"
-import { LayoutDashboard, Users, Heart, FileText, Bell, MessageSquare, LogOut, Menu, X, User } from "lucide-react"
+import { LayoutDashboard, Users, Heart, FileText, Bell, LogOut, Menu, X, User } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
@@ -48,11 +48,6 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
     }
 
     fetchUnreadNotifications()
-
-    // Poll for new notifications every minute
-    const intervalId = setInterval(fetchUnreadNotifications, 60000)
-
-    return () => clearInterval(intervalId)
   }, [token])
 
   const handleLogout = () => {
@@ -75,7 +70,6 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
     { name: "Dashboard", href: "/dashboard", icon: <LayoutDashboard className="h-5 w-5" /> },
     { name: "Campaigns", href: "/dashboard/campaigns", icon: <Heart className="h-5 w-5" /> },
     { name: "My Applications", href: "/dashboard/applications", icon: <FileText className="h-5 w-5" /> },
-    { name: "Messages", href: "/dashboard/messages", icon: <MessageSquare className="h-5 w-5" /> },
     {
       name: "Notifications",
       href: "/dashboard/notifications",
@@ -158,11 +152,10 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
                     <Link
                       key={item.name}
                       href={item.href}
-                      className={`flex items-center gap-3 px-3 py-2 rounded-md text-sm ${
-                        pathname === item.href
-                          ? "bg-emerald-50 text-emerald-700 font-medium"
-                          : "text-gray-600 hover:bg-gray-100"
-                      }`}
+                      className={`flex items-center gap-3 px-3 py-2 rounded-md text-sm ${pathname === item.href
+                        ? "bg-emerald-50 text-emerald-700 font-medium"
+                        : "text-gray-600 hover:bg-gray-100"
+                        }`}
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       {item.icon}
@@ -180,11 +173,10 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
                         <Link
                           key={item.name}
                           href={item.href}
-                          className={`flex items-center gap-3 px-3 py-2 rounded-md text-sm ${
-                            pathname === item.href
-                              ? "bg-emerald-50 text-emerald-700 font-medium"
-                              : "text-gray-600 hover:bg-gray-100"
-                          }`}
+                          className={`flex items-center gap-3 px-3 py-2 rounded-md text-sm ${pathname === item.href
+                            ? "bg-emerald-50 text-emerald-700 font-medium"
+                            : "text-gray-600 hover:bg-gray-100"
+                            }`}
                           onClick={() => setIsMobileMenuOpen(false)}
                         >
                           {item.icon}
@@ -203,11 +195,10 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
                         <Link
                           key={item.name}
                           href={item.href}
-                          className={`flex items-center gap-3 px-3 py-2 rounded-md text-sm ${
-                            pathname === item.href
-                              ? "bg-emerald-50 text-emerald-700 font-medium"
-                              : "text-gray-600 hover:bg-gray-100"
-                          }`}
+                          className={`flex items-center gap-3 px-3 py-2 rounded-md text-sm ${pathname === item.href
+                            ? "bg-emerald-50 text-emerald-700 font-medium"
+                            : "text-gray-600 hover:bg-gray-100"
+                            }`}
                           onClick={() => setIsMobileMenuOpen(false)}
                         >
                           {item.icon}
@@ -252,11 +243,10 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
                   <Link
                     key={item.name}
                     href={item.href}
-                    className={`flex items-center gap-3 px-3 py-2 rounded-md text-sm ${
-                      pathname === item.href
-                        ? "bg-emerald-50 text-emerald-700 font-medium"
-                        : "text-gray-600 hover:bg-gray-100"
-                    }`}
+                    className={`flex items-center gap-3 px-3 py-2 rounded-md text-sm ${pathname === item.href
+                      ? "bg-emerald-50 text-emerald-700 font-medium"
+                      : "text-gray-600 hover:bg-gray-100"
+                      }`}
                   >
                     {item.icon}
                     {item.name}
@@ -273,11 +263,10 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
                       <Link
                         key={item.name}
                         href={item.href}
-                        className={`flex items-center gap-3 px-3 py-2 rounded-md text-sm ${
-                          pathname === item.href
-                            ? "bg-emerald-50 text-emerald-700 font-medium"
-                            : "text-gray-600 hover:bg-gray-100"
-                        }`}
+                        className={`flex items-center gap-3 px-3 py-2 rounded-md text-sm ${pathname === item.href
+                          ? "bg-emerald-50 text-emerald-700 font-medium"
+                          : "text-gray-600 hover:bg-gray-100"
+                          }`}
                       >
                         {item.icon}
                         {item.name}
@@ -295,11 +284,10 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
                       <Link
                         key={item.name}
                         href={item.href}
-                        className={`flex items-center gap-3 px-3 py-2 rounded-md text-sm ${
-                          pathname === item.href
-                            ? "bg-emerald-50 text-emerald-700 font-medium"
-                            : "text-gray-600 hover:bg-gray-100"
-                        }`}
+                        className={`flex items-center gap-3 px-3 py-2 rounded-md text-sm ${pathname === item.href
+                          ? "bg-emerald-50 text-emerald-700 font-medium"
+                          : "text-gray-600 hover:bg-gray-100"
+                          }`}
                       >
                         {item.icon}
                         {item.name}

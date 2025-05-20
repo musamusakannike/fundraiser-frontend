@@ -4,6 +4,7 @@ import { SERVER_URL } from '@/constants';
 import { Heart, TrendingUp, Users, ChevronRight, Calendar, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
+import Image from 'next/image';
 
 // Define types for campaign and state
 interface Campaign {
@@ -66,6 +67,7 @@ const ActiveCampaigns = () => {
     const calculateProgress = (amountNeeded: number) => {
         // Simulating random progress between 10-90% for demo purposes
         // In real app, you would calculate this based on amountRaised/amountNeeded
+        amountNeeded = amountNeeded || 100000; // Default to 100,000 if not provided
         return Math.floor(Math.random() * 80) + 10;
     };
 
@@ -172,10 +174,12 @@ const ActiveCampaigns = () => {
                                                             className={`absolute inset-0 transition-opacity duration-500 ${index === activeSlide[campaign._id] ? 'opacity-100' : 'opacity-0'
                                                                 }`}
                                                         >
-                                                            <img
+                                                            <Image
                                                                 src={image}
                                                                 alt={`${campaign.title} - image ${index + 1}`}
                                                                 className="w-full h-full object-cover"
+                                                                width={500}
+                                                                height={300}
                                                             />
                                                         </div>
                                                     ))}
@@ -207,8 +211,8 @@ const ActiveCampaigns = () => {
                                                                         [campaign._id]: index
                                                                     }))}
                                                                     className={`w-2 h-2 rounded-full transition-all duration-300 ${index === activeSlide[campaign._id]
-                                                                            ? 'bg-white w-4'
-                                                                            : 'bg-white bg-opacity-50'
+                                                                        ? 'bg-white w-4'
+                                                                        : 'bg-white bg-opacity-50'
                                                                         }`}
                                                                     aria-label={`Go to slide ${index + 1}`}
                                                                 />

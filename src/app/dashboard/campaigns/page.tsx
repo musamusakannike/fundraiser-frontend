@@ -9,6 +9,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Heart, Plus, Search, Loader2 } from "lucide-react"
 import Link from "next/link"
 import { SERVER_URL } from "@/constants"
+import Image from "next/image"
 
 interface Campaign {
   _id: string
@@ -29,7 +30,7 @@ interface Campaign {
 }
 
 const CampaignsPage = () => {
-  const { user, token } = useAuth()
+  const { user } = useAuth()
   const [campaigns, setCampaigns] = useState<Campaign[]>([])
   const [loading, setLoading] = useState(true)
   const [searchTerm, setSearchTerm] = useState("")
@@ -154,10 +155,12 @@ const CampaignsPage = () => {
                 <Card className="overflow-hidden h-full hover:shadow-md transition-shadow">
                   <div className="aspect-video relative bg-gray-100">
                     {campaign.images && campaign.images.length > 0 ? (
-                      <img
+                      <Image
                         src={campaign.images[0] || "/placeholder.svg"}
                         alt={campaign.title}
                         className="w-full h-full object-cover"
+                        width={500}
+                        height={300}
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center bg-emerald-50">

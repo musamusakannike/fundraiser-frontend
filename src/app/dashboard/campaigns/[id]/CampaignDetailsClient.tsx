@@ -11,6 +11,7 @@ import { Heart, FileText, Edit, Trash2, AlertTriangle, CheckCircle, XCircle, Loa
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { SERVER_URL } from "@/constants"
+import Image from "next/image"
 
 interface Campaign {
     _id: string
@@ -216,7 +217,7 @@ export default function CampaignDetailsClient({ id }: { id: string }) {
                 <div className="text-center py-12">
                     <AlertTriangle className="h-12 w-12 text-yellow-500 mx-auto mb-4" />
                     <h2 className="text-2xl font-bold mb-2">Campaign Not Found</h2>
-                    <p className="text-gray-500 mb-6">The campaign you're looking for doesn't exist or has been removed.</p>
+                    <p className="text-gray-500 mb-6">The campaign you&apos;re looking for doesn&apos;t exist or has been removed.</p>
                     <Link href="/dashboard/campaigns">
                         <Button>Back to Campaigns</Button>
                     </Link>
@@ -290,10 +291,12 @@ export default function CampaignDetailsClient({ id }: { id: string }) {
                             {campaign.images && campaign.images.length > 0 ? (
                                 campaign.images.map((image, index) => (
                                     <div key={index} className="aspect-video rounded-lg overflow-hidden bg-gray-100">
-                                        <img
+                                        <Image
                                             src={image || "/placeholder.svg"}
                                             alt={`${campaign.title} - Image ${index + 1}`}
                                             className="w-full h-full object-cover"
+                                            width={500}
+                                            height={300}
                                         />
                                     </div>
                                 ))

@@ -30,7 +30,6 @@ const NewApplicationPage = () => {
     const [campaignId, setCampaignId] = useState("")
     const [documents, setDocuments] = useState<File[]>([])
     const [campaigns, setCampaigns] = useState<Campaign[]>([])
-    const [loading, setLoading] = useState(false)
     const [fetchingCampaigns, setFetchingCampaigns] = useState(true)
     const [submitting, setSubmitting] = useState(false)
     const router = useRouter()
