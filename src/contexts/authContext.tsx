@@ -5,6 +5,7 @@ import { SERVER_URL } from '@/constants';
 interface User {
   _id: string;
   fullName: string;
+  profileImage: string;
   email: string;
   role: string;
   phoneNumber: string;
