@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import { SERVER_URL } from '@/constants';
 import { Heart, TrendingUp, Users, ChevronRight, Calendar, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Progress } from '@/components/ui/progress';
 import Image from 'next/image';
 
 // Define types for campaign and state
@@ -62,13 +61,6 @@ const ActiveCampaigns = () => {
             month: 'short',
             year: 'numeric'
         }).format(date);
-    };
-
-    const calculateProgress = (amountNeeded: number) => {
-        // Simulating random progress between 10-90% for demo purposes
-        // In real app, you would calculate this based on amountRaised/amountNeeded
-        amountNeeded = amountNeeded || 100000; // Default to 100,000 if not provided
-        return Math.floor(Math.random() * 80) + 10;
     };
 
     const formatCurrency = (amount: number) => {
@@ -156,8 +148,6 @@ const ActiveCampaigns = () => {
                 ) : (
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                         {campaigns.map((campaign) => {
-                            const progress = calculateProgress(campaign.amountNeeded);
-
                             return (
                                 <div
                                     key={campaign._id}
@@ -252,13 +242,11 @@ const ActiveCampaigns = () => {
                                             {campaign.description}
                                         </p>
 
-                                        {/* Progress Bar */}
+                                        {/* Amount Needed */}
                                         <div className="mt-6 mb-6">
-                                            <div className="flex justify-between text-sm font-medium mb-1">
-                                                <span className="text-emerald-700">{progress}% Funded</span>
+                                            <div className="flex justify-end text-sm font-medium mb-1">
                                                 <span className="text-gray-500">{formatCurrency(campaign.amountNeeded)}</span>
                                             </div>
-                                            <Progress value={progress} className="h-2 bg-emerald-100" />
                                         </div>
 
                                         {/* Campaign Creator */}
