@@ -372,15 +372,16 @@ const NotificationsPage = () => {
                   {getNotificationTypeIcon(notification.type)}
                 </div>
 
-                <div className="flex-1">
+                <div className="flex-1 min-w-0">
                   <Link
                     href={getNotificationLink(notification)}
                     onClick={() => !notification.isRead && markAsRead(notification._id)}
+                    className="block"
                   >
-                    <div className="cursor-pointer">
+                    <div className="cursor-pointer space-y-2">
                       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
-                        <h3 className="font-semibold text-lg">{notification.title}</h3>
-                        <div className="flex items-center">
+                        <h3 className="font-semibold text-lg truncate">{notification.title}</h3>
+                        <div className="flex items-center shrink-0">
                           {!notification.isRead && (
                             <Badge className="bg-emerald-100 text-emerald-800 border-emerald-200 mr-2">New</Badge>
                           )}
@@ -390,17 +391,17 @@ const NotificationsPage = () => {
                           </span>
                         </div>
                       </div>
-                      <p className="text-gray-600 mt-2 whitespace-pre-line">{notification.message}</p>
+                      <p className="text-gray-600 mt-2 whitespace-pre-line break-words">{notification.message}</p>
                     </div>
                   </Link>
 
                   <Separator className="my-4" />
 
-                  <div className="flex justify-between items-center">
-                    <div className="text-sm text-gray-500">
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
+                    <div className="text-sm text-gray-500 truncate">
                       From: {notification.sender ? notification.sender.fullName : "System"}
                     </div>
-                    <div className="flex gap-2">
+                    <div className="flex gap-2 flex-wrap justify-end">
                       <Link href={getNotificationLink(notification)}>
                         <Button
                           variant="outline"
