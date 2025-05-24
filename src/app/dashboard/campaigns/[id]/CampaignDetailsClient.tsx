@@ -82,8 +82,8 @@ export default function CampaignDetailsClient({ id }: { id: string }) {
         const response = await fetch(`${SERVER_URL}/api/campaigns/${id}`, {
           headers: token
             ? {
-                Authorization: `Bearer ${token}`,
-              }
+              Authorization: `Bearer ${token}`,
+            }
             : {},
         })
 
@@ -383,14 +383,6 @@ export default function CampaignDetailsClient({ id }: { id: string }) {
             >
               Donate
             </TabsTrigger>
-            {isAdmin && (
-              <TabsTrigger
-                value="applications"
-                className="data-[state=active]:bg-emerald-50 data-[state=active]:text-emerald-700"
-              >
-                Applications
-              </TabsTrigger>
-            )}
           </TabsList>
 
           <TabsContent value="details" className="space-y-6 mt-6">
@@ -670,150 +662,7 @@ export default function CampaignDetailsClient({ id }: { id: string }) {
             </Card>
           </TabsContent>
 
-          {isAdmin && (
-            <TabsContent value="applications" className="space-y-6 mt-6">
-              <Card className="border-none shadow-md overflow-hidden">
-                <CardHeader className="bg-gradient-to-r from-emerald-50 to-emerald-100 border-b">
-                  <CardTitle className="text-lg font-semibold text-emerald-800">Applications</CardTitle>
-                  <CardDescription className="text-emerald-600">Manage applications for this campaign</CardDescription>
-                </CardHeader>
-                <CardContent className="p-0">
-                  {campaign.applications && campaign.applications.length > 0 ? (
-                    <div>
-                      {campaign.applications.map((application, index) => (
-                        <Link key={application._id} href={`/dashboard/admin/applications/${application._id}`}>
-                          <div
-                            className={`group flex items-start gap-3 p-4 transition-colors hover:bg-emerald-50 ${
-                              index !== campaign.applications!.length - 1 ? "border-b" : ""
-                            }`}
-                          >
-                            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-600 group-hover:bg-emerald-200">
-                              {application.status === "approved" ? (
-                                <CheckCircle className="h-5 w-5" />
-                              ) : application.status === "rejected" ? (
-                                <XCircle className="h-5 w-5" />
-                              ) : (
-                                <Clock className="h-5 w-5" />
-                              )}
-                            </div>
-                            <div className="flex-1">
-                              <div className="flex items-center justify-between">
-                                <h3 className="font-medium text-gray-900 group-hover:text-emerald-700">
-                                  {application.title}
-                                </h3>
-                                <Badge className={`${getStatusBadgeStyles(application.status)} border`}>
-                                  {application.status.charAt(0).toUpperCase() + application.status.slice(1)}
-                                </Badge>
-                              </div>
-                              <div className="mt-1 flex items-center text-sm text-gray-500">
-                                <Calendar className="mr-1 h-3.5 w-3.5" />
-                                {formatDate(application.createdAt)}
-                              </div>
-                            </div>
-                          </div>
-                        </Link>
-                      ))}
-                    </div>
-                  ) : (
-                    <div className="flex flex-col items-center justify-center py-12 text-center">
-                      <div className="rounded-full bg-emerald-100 p-3 mb-4">
-                        <FileText className="h-6 w-6 text-emerald-600" />
-                      </div>
-                      <h3 className="text-lg font-medium mb-2 text-gray-900">No applications yet</h3>
-                      <p className="text-gray-500 max-w-md">
-                        No applications have been submitted for this campaign yet.
-                      </p>
-                    </div>
-                  )}
-                </CardContent>
-              </Card>
 
-              {/* Applications Stats */}
-              {campaign.applications && campaign.applications.length > 0 && (
-                <Card className="border-none shadow-md overflow-hidden">
-                  <CardHeader className="bg-gradient-to-r from-emerald-50 to-emerald-100 border-b">
-                    <CardTitle className="text-lg font-semibold text-emerald-800">Application Statistics</CardTitle>
-                  </CardHeader>
-                  <CardContent className="p-6">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                      {/* Total Applications */}
-                      <div className="bg-gray-50 rounded-lg p-4 border border-gray-100">
-                        <div className="text-sm text-gray-500 mb-1">Total Applications</div>
-                        <div className="text-2xl font-bold text-gray-900">{campaign.applications.length}</div>
-                      </div>
-
-                      {/* Pending Applications */}
-                      <div className="bg-amber-50 rounded-lg p-4 border border-amber-100">
-                        <div className="text-sm text-amber-700 mb-1">Pending</div>
-                        <div className="text-2xl font-bold text-amber-800">
-                          {campaign.applications.filter((app) => app.status === "pending").length}
-                        </div>
-                      </div>
-
-                      {/* Approved Applications */}
-                      <div className="bg-emerald-50 rounded-lg p-4 border border-emerald-100">
-                        <div className="text-sm text-emerald-700 mb-1">Approved</div>
-                        <div className="text-2xl font-bold text-emerald-800">
-                          {campaign.applications.filter((app) => app.status === "approved").length}
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="mt-6 space-y-4">
-                      <div>
-                        <div className="flex justify-between text-sm mb-1">
-                          <span className="text-gray-500">Application Status Distribution</span>
-                        </div>
-                        <div className="flex h-2 w-full overflow-hidden rounded-full bg-gray-100">
-                          {/* Approved */}
-                          {campaign.applications.filter((app) => app.status === "approved").length > 0 && (
-                            <div
-                              className="bg-emerald-500 h-full"
-                              style={{
-                                width: `${(campaign.applications.filter((app) => app.status === "approved").length / campaign.applications.length) * 100}%`,
-                              }}
-                            />
-                          )}
-                          {/* Pending */}
-                          {campaign.applications.filter((app) => app.status === "pending").length > 0 && (
-                            <div
-                              className="bg-amber-500 h-full"
-                              style={{
-                                width: `${(campaign.applications.filter((app) => app.status === "pending").length / campaign.applications.length) * 100}%`,
-                              }}
-                            />
-                          )}
-                          {/* Rejected */}
-                          {campaign.applications.filter((app) => app.status === "rejected").length > 0 && (
-                            <div
-                              className="bg-red-500 h-full"
-                              style={{
-                                width: `${(campaign.applications.filter((app) => app.status === "rejected").length / campaign.applications.length) * 100}%`,
-                              }}
-                            />
-                          )}
-                        </div>
-                        <div className="flex justify-between mt-2 text-xs">
-                          <div className="flex items-center">
-                            <div className="h-2 w-2 rounded-full bg-emerald-500 mr-1"></div>
-                            <span>Approved</span>
-                          </div>
-                          <div className="flex items-center">
-                            <div className="h-2 w-2 rounded-full bg-amber-500 mr-1"></div>
-                            <span>Pending</span>
-                          </div>
-                          <div className="flex items-center">
-                            <div className="h-2 w-2 rounded-full bg-red-500 mr-1"></div>
-                            <span>Rejected</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              )}
-            </TabsContent>
-          )}
         </Tabs>
       </div>
     </DashboardLayout>
