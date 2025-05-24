@@ -191,7 +191,7 @@ const Dashboard = () => {
   return (
     <DashboardLayout>
       <div className="space-y-8">
-        <div className="relative overflow-hidden rounded-xl bg-gradient-to-r from-emerald-600 to-emerald-800 p-8 text-white shadow-lg">
+        <div className="relative overflow-hidden rounded-xl bg-gradient-to-r from-emerald-600 to-emerald-800 m-4 p-8 text-white shadow-lg">
           <div className="absolute right-0 top-0 opacity-10">
             <svg width="350" height="350" viewBox="0 0 350 350" xmlns="http://www.w3.org/2000/svg">
               <path
@@ -225,7 +225,7 @@ const Dashboard = () => {
 
         {isAdmin && (
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
-            <Card className="overflow-hidden border-none shadow-md">
+            <Card className="overflow-hidden border-none shadow-md pb-2">
               <CardHeader className="bg-gradient-to-r from-emerald-50 to-emerald-100 py-2">
                 <CardTitle className="flex items-center text-lg font-semibold text-emerald-800">
                   <TrendingUp className="mr-2 h-5 w-5 text-emerald-600" />
@@ -250,7 +250,7 @@ const Dashboard = () => {
               </CardContent>
             </Card>
 
-            <Card className="overflow-hidden border-none shadow-md">
+            <Card className="overflow-hidden border-none shadow-md pb-2">
               <CardHeader className="bg-gradient-to-r from-emerald-50 to-emerald-100 py-2">
                 <CardTitle className="flex items-center text-lg font-semibold text-emerald-800">
                   <FileText className="mr-2 h-5 w-5 text-emerald-600" />
@@ -289,7 +289,7 @@ const Dashboard = () => {
               </CardContent>
             </Card>
 
-            <Card className="overflow-hidden border-none shadow-md">
+            <Card className="overflow-hidden border-none shadow-md pb-2">
               <CardHeader className="bg-gradient-to-r from-emerald-50 to-emerald-100 py-2">
                 <CardTitle className="flex items-center text-lg font-semibold text-emerald-800">
                   <Users className="mr-2 h-5 w-5 text-emerald-600" />
@@ -319,7 +319,7 @@ const Dashboard = () => {
               </CardContent>
             </Card>
 
-            <Card className="overflow-hidden border-none shadow-md">
+            <Card className="overflow-hidden border-none shadow-md pb-2">
               <CardHeader className="bg-gradient-to-r from-emerald-50 to-emerald-100 py-2">
                 <CardTitle className="flex items-center text-lg font-semibold text-emerald-800">
                   <Calendar className="mr-2 h-5 w-5 text-emerald-600" />
@@ -350,7 +350,7 @@ const Dashboard = () => {
 
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           {/* Active Campaigns */}
-          <Card className="border-none shadow-md">
+          <Card className="border-none shadow-md pb-2">
             <CardHeader className="border-b bg-gradient-to-r from-emerald-50 to-emerald-100 py-4">
               <div className="flex items-center justify-between">
                 <CardTitle className="flex items-center text-lg font-semibold text-emerald-800">
@@ -410,7 +410,7 @@ const Dashboard = () => {
           </Card>
 
           {/* My Applications */}
-          <Card className="border-none shadow-md">
+          <Card className="border-none shadow-md pb-2">
             <CardHeader className="border-b bg-gradient-to-r from-emerald-50 to-emerald-100 py-4">
               <div className="flex items-center justify-between">
                 <CardTitle className="flex items-center text-lg font-semibold text-emerald-800">
