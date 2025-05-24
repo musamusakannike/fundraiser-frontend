@@ -437,7 +437,7 @@ const AdminApplicationsPage = () => {
                 </Card>
 
                 {/* Applications List */}
-                <Card>
+                <Card className="w-full py-3">
                     <CardHeader>
                         <div className="flex justify-between items-center">
                             <CardTitle>Applications ({filteredApplications.length})</CardTitle>
