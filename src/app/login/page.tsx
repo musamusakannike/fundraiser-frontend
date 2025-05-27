@@ -37,7 +37,7 @@ const LoginPage = () => {
         </div>
 
         <Card className="border-none shadow-lg overflow-hidden">
-          <CardHeader className="bg-gradient-to-r from-emerald-600 to-emerald-700 text-white">
+          <CardHeader className="bg-gradient-to-r from-emerald-600 to-emerald-700 text-white pt-3 pb-2">
             <CardTitle className="text-xl">Welcome Back</CardTitle>
             <CardDescription className="text-emerald-100">
               Sign in to your account to continue
