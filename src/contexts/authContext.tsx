@@ -64,20 +64,19 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         body: JSON.stringify({ email, password }),
       });
       const data = await res.json();
-      if (data.success) {
-        setToken(data.token);
-        setUser(data.user);
-        localStorage.setItem("token", data.token);
-        localStorage.setItem("user", JSON.stringify(data.user));
-      } else {
+      if (!data.success) {
         setError(data.message || "Login failed");
+        throw new Error(data.message || "Login failed");
       }
+      setToken(data.token);
+      setUser(data.user);
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("user", JSON.stringify(data.user));
     } catch (err) {
       console.error(err);
       setError("Login failed");
-    } finally {
-      setLoading(false);
     }
+    setLoading(false);
   };
 
   const register = async (registerData: RegisterData) => {

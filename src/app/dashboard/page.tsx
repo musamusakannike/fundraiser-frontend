@@ -477,10 +477,10 @@ const Dashboard = () => {
                   </div>
                   <h3 className="mt-4 text-sm font-medium text-gray-900">No applications</h3>
                   <p className="mt-1 text-sm text-gray-500">You haven&apos;t submitted any applications yet.</p>
-                  <Button variant="outline" className="mt-4 border-emerald-200 text-emerald-700 hover:bg-emerald-50">
+                  <Link href="/dashboard/applications"><Button variant="outline" className="mt-4 border-emerald-200 text-emerald-700 hover:bg-emerald-50">
                     <FileText className="mr-2 h-4 w-4" />
                     Create Application
-                  </Button>
+                  </Button></Link>
                 </div>
               )}
             </CardContent>

@@ -23,19 +23,31 @@ import {
   AlertCircle,
   CheckCircle,
 } from "lucide-react";
+import { toast } from "@/components/ui/use-toast";
 
 const LoginPage = () => {
-  const { login, loading, error } = useAuth();
+  const { login, loading } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [success, setSuccess] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    await login(email, password);
-    setSuccess(true);
-    router.push("/dashboard");
+    try {
+      await login(email, password);
+      setSuccess(true);
+      router.push("/dashboard");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Login failed');
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: err instanceof Error ? err.message : "Login failed",
+      });
+      console.error(err);
+    }
   };
 
   return (

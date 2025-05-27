@@ -364,7 +364,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
         )}
 
         {/* Sidebar - Desktop */}
-        <aside className="hidden md:block w-64 border-r bg-white shadow-sm">
+        <aside className="hidden md:block w-64 border-r bg-white shadow-sm max-h-[calc(100vh-64px)] overflow-y-auto">
           <div className="flex h-full flex-col">
             <div className="overflow-y-auto p-4">
               <div className="mb-6 flex items-center border-b pb-4">
