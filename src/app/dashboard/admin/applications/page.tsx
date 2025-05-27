@@ -16,7 +16,7 @@ import {
     XCircle,
     Trash2,
     Loader2,
-    MessageSquare,
+    // MessageSquare,
     Calendar,
     User,
 } from "lucide-react"
@@ -515,12 +515,12 @@ const AdminApplicationsPage = () => {
                                                                     View
                                                                 </Button>
                                                             </Link>
-                                                            <Link href={`/dashboard/messages?application=${application._id}`}>
+                                                            {/* <Link href={`/dashboard/messages?application=${application._id}`}>
                                                                 <Button variant="outline" size="sm">
                                                                     <MessageSquare className="h-4 w-4 mr-1" />
                                                                     Message
                                                                 </Button>
-                                                            </Link>
+                                                            </Link> */}
                                                         </div>
 
                                                         {application.status === "pending" && (
