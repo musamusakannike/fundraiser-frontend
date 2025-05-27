@@ -27,7 +27,7 @@ const CTA = () => {
                         <Button
                             size="lg"
                             variant="outline"
-                            className="border-2 border-white text-white hover:bg-emerald-600 hover:border-emerald-600 transition-all duration-300 px-8 py-6 text-lg font-medium rounded-full"
+                            className="border-2 border-white text-white bg-emerald-500 hover:bg-emerald-800 hover:border-emerald-600 transition-all duration-300 px-8 py-6 text-lg font-medium rounded-full"
                         >
                             Create Account
                         </Button>

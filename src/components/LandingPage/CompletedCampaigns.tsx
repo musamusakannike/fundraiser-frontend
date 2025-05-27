@@ -4,6 +4,7 @@ import { SERVER_URL } from '@/constants';
 import { CheckCircle, Award, Loader2, ChevronRight, Calendar, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
+import Link from 'next/link';
 
 // Define types for campaign and state
 interface Campaign {
@@ -361,12 +362,14 @@ const CompletedCampaigns = () => {
                 {/* View All Success Stories Button (only show if there are campaigns) */}
                 {campaigns.length > 0 && (
                     <div className="text-center mt-12">
+                        <Link href="/dashboard/campaigns">
                         <Button
                             className="bg-gradient-to-r from-teal-500 to-teal-700 hover:from-teal-600 hover:to-teal-800 text-white px-6 py-2 rounded-full font-medium transition-all duration-300 shadow-md hover:shadow-lg"
                         >
                             View All Success Stories
                             <ChevronRight className="ml-2 h-4 w-4" />
                         </Button>
+                        </Link>
                     </div>
                 )}
             </div>
