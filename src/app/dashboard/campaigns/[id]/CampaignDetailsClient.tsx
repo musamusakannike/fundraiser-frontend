@@ -9,7 +9,6 @@ import { Badge } from "@/components/ui/badge"
 import { useToast } from "@/components/ui/use-toast"
 import {
   Heart,
-  FileText,
   Edit,
   Trash2,
   AlertTriangle,
@@ -19,7 +18,6 @@ import {
   Copy,
   Calendar,
   User,
-  Clock,
   ArrowLeft,
   BanknoteIcon as Bank,
   DollarSign,
@@ -48,25 +46,11 @@ interface Campaign {
   }
   createdAt: string
   updatedAt: string
-  applications?: {
-    _id: string
-    title: string
-    status: string
-    createdAt: string
-  }[]
-}
-
-interface Application {
-  _id: string
-  title: string
-  status: string
-  createdAt: string
 }
 
 export default function CampaignDetailsClient({ id }: { id: string }) {
   const { user, token } = useAuth()
   const [campaign, setCampaign] = useState<Campaign | null>(null)
-  const [userApplications, setUserApplications] = useState<Application[]>([])
   const [loading, setLoading] = useState(true)
   const [deleting, setDeleting] = useState(false)
   const [updatingStatus, setUpdatingStatus] = useState(false)
@@ -90,10 +74,6 @@ export default function CampaignDetailsClient({ id }: { id: string }) {
         if (response.ok) {
           const data = await response.json()
           setCampaign(data.campaign)
-
-          if (data.campaign.applications) {
-            setUserApplications(data.campaign.applications)
-          }
         } else {
           toast({
             title: "Error",
@@ -255,9 +235,6 @@ export default function CampaignDetailsClient({ id }: { id: string }) {
     )
   }
 
-  const hasApplied = userApplications.length > 0
-  const canApply = campaign.status === "active" && user && !hasApplied
-
   return (
     <DashboardLayout>
       <div className="space-y-8">
@@ -335,17 +312,6 @@ export default function CampaignDetailsClient({ id }: { id: string }) {
                 </div>
               )}
             </div>
-
-            {canApply && (
-              <div className="mt-6">
-                <Link href={`/dashboard/applications/new?campaign=${campaign._id}`}>
-                  <Button className="bg-white text-emerald-800 hover:bg-emerald-50">
-                    <FileText className="h-4 w-4 mr-2" />
-                    Apply for Support
-                  </Button>
-                </Link>
-              </div>
-            )}
           </div>
         </div>
 
@@ -406,39 +372,6 @@ export default function CampaignDetailsClient({ id }: { id: string }) {
                 <div>
                   <p className="text-sm text-gray-500 mb-1">Amount Needed</p>
                   <p className="text-2xl font-bold text-emerald-700">{formatCurrency(campaign.amountNeeded)}</p>
-                </div>
-
-                <div className="flex flex-col sm:flex-row gap-3 sm:items-center">
-                  {canApply && (
-                    <Link href={`/dashboard/applications/new?campaign=${campaign._id}`}>
-                      <Button className="w-full sm:w-auto">
-                        <FileText className="h-4 w-4 mr-2" />
-                        Apply for Support
-                      </Button>
-                    </Link>
-                  )}
-
-                  {hasApplied && (
-                    <div className="px-4 py-2 bg-emerald-50 border border-emerald-100 rounded-md text-sm text-emerald-700">
-                      <CheckCircle className="h-4 w-4 inline-block mr-2" />
-                      You have already applied
-                    </div>
-                  )}
-
-                  {!user && (
-                    <Link href="/login">
-                      <Button variant="outline" className="w-full sm:w-auto">
-                        Login to Apply
-                      </Button>
-                    </Link>
-                  )}
-
-                  {campaign.status !== "active" && (
-                    <div className="px-4 py-2 bg-amber-50 border border-amber-100 rounded-md text-sm text-amber-700">
-                      <Clock className="h-4 w-4 inline-block mr-2" />
-                      No longer accepting applications
-                    </div>
-                  )}
                 </div>
               </CardFooter>
             </Card>
