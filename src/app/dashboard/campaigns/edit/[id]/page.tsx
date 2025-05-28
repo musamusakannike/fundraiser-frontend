@@ -1,6 +1,6 @@
-import CampaignEditClient from "./CampaignEditClient"
+import CampaignEditClient from "./CampaignEditClient";
 
 export default function Page({ params }: { params: { id: string } }) {
-    const { id } = params
-    return <CampaignEditClient id={id} />
+    const { id } = params;
+    return <CampaignEditClient id={id} />;
 }
