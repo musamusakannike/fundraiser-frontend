@@ -285,7 +285,7 @@ export default function CampaignDetailsClient({ id }: { id: string }) {
 
               {isAdmin && (
                 <div className="flex gap-2 mt-2 md:mt-0">
-                  <Link href={`/dashboard/campaigns/${id}/edit`}>
+                  <Link href={`/dashboard/campaigns/edit/${id}`}>
                     <Button variant="outline" className="border-white/30 bg-white/10 text-white hover:bg-white/20">
                       <Edit className="h-4 w-4 mr-2" />
                       Edit
