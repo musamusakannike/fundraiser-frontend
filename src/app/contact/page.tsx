@@ -30,18 +30,28 @@ const ContactPage = () => {
     }));
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     // Basic validation
     if (!formData.name || !formData.email || !formData.subject || !formData.message) {
       alert('Please fill in all required fields.');
       return;
     }
-    
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-    // You can add your form submission logic here
-    alert('Thank you for your message! We\'ll get back to you soon.');
-    setFormData({ name: '', email: '', subject: '', message: '' });
+    try {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/contact/contact`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        alert('Thank you for your message! We\'ll get back to you soon.');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        alert(data.error || 'Failed to send message. Please try again later.');
+      }
+    } catch {
+      alert('Failed to send message. Please try again later.');
+    }
   };
 
   return (
