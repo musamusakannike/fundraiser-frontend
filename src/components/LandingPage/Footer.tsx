@@ -10,12 +10,6 @@ const Footer = () => {
                         &copy; {new Date().getFullYear()} Nigerian Islamic Fundraiser. All rights reserved.
                     </p>
                     <div className="flex gap-6">
-                        <Link href="/terms" className="text-gray-600 hover:text-emerald-700">
-                            Terms of Service
-                        </Link>
-                        <Link href="/privacy" className="text-gray-600 hover:text-emerald-700">
-                            Privacy Policy
-                        </Link>
                         <Link href="/contact" className="text-gray-600 hover:text-emerald-700">
                             Contact Us
                         </Link>
