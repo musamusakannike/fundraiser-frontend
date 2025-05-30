@@ -57,7 +57,7 @@ const LoginPage = () => {
           <div className="inline-flex items-center justify-center h-16 w-16 rounded-full bg-emerald-600 text-white mb-4">
             <Heart className="h-8 w-8" />
           </div>
-          <h1 className="text-3xl font-bold text-emerald-800">The Advocate</h1>
+          <h1 className="text-3xl font-bold text-emerald-800">Your Advocate</h1>
           <p className="text-emerald-600 mt-1">Islamic Fundraiser Platform</p>
         </div>
 
@@ -158,7 +158,7 @@ const LoginPage = () => {
 
         <div className="text-center mt-8 text-sm text-gray-500">
           <p>
-            &copy; {new Date().getFullYear()} The Advocate. All rights reserved.
+            &copy; {new Date().getFullYear()} Your Advocate. All rights reserved.
           </p>
         </div>
       </div>

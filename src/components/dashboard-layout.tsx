@@ -152,7 +152,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
               <div className="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-600 text-white">
                 <Heart className="h-5 w-5" />
               </div>
-              <span className="ml-2 text-xl font-bold text-emerald-800">The Advocate</span>
+              <span className="ml-2 text-xl font-bold text-emerald-800">Your Advocate</span>
             </Link>
           </div>
 

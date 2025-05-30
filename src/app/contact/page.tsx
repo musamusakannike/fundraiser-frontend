@@ -64,7 +64,7 @@ const ContactPage = () => {
               <div className="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-600 text-white">
                 <Heart className="h-5 w-5" />
               </div>
-              <span className="ml-2 text-xl font-bold text-emerald-800">The Advocate</span>
+              <span className="ml-2 text-xl font-bold text-emerald-800">Your Advocate</span>
             </div>
             <nav className="hidden md:flex space-x-8">
               <Link href="/" className="text-gray-700 hover:text-emerald-600 transition-colors">Home</Link>
@@ -302,7 +302,7 @@ const ContactPage = () => {
               <div className="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-600 text-white">
                 <Heart className="h-5 w-5" />
               </div>
-              <span className="ml-2 text-xl font-bold">The Advocate</span>
+              <span className="ml-2 text-xl font-bold">Your Advocate</span>
             </div>
             <p className="text-gray-400 mb-4">Advocating for those in need, building stronger communities together.</p>
             <div className="flex justify-center space-x-6">
@@ -317,7 +317,7 @@ const ContactPage = () => {
               </a>
             </div>
             <div className="mt-8 pt-8 border-t border-gray-800">
-              <p className="text-gray-400">&copy; 2025 The Advocate. All rights reserved.</p>
+              <p className="text-gray-400">&copy; 2025 Your Advocate. All rights reserved.</p>
             </div>
           </div>
         </div>
