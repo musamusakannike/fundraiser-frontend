@@ -211,14 +211,18 @@ const Dashboard = () => {
               })}
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <Button className="bg-white text-emerald-800 hover:bg-emerald-50">
-                <FileText className="mr-2 h-4 w-4" />
-                New Application
-              </Button>
-              <Button variant="outline" className="border-white bg-transparent text-white hover:bg-white/20">
-                <Heart className="mr-2 h-4 w-4" />
-                View Campaigns
-              </Button>
+              <Link href="/dashboard/applications/new">
+                <Button className="bg-white text-emerald-800 hover:bg-emerald-50">
+                  <FileText className="mr-2 h-4 w-4" />
+                  New Application
+                </Button>
+              </Link>
+              <Link href="/dashboard/campaigns">
+                <Button variant="outline" className="border-white bg-transparent text-white hover:bg-white/20">
+                  <Heart className="mr-2 h-4 w-4" />
+                  View Campaigns
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -378,9 +382,8 @@ const Dashboard = () => {
                   {activeCampaigns.map((campaign, index) => (
                     <Link key={campaign._id} href={`/dashboard/campaigns/${campaign._id}`}>
                       <div
-                        className={`group flex items-start gap-3 p-4 transition-colors hover:bg-emerald-50 ${
-                          index !== activeCampaigns.length - 1 ? "border-b" : ""
-                        }`}
+                        className={`group flex items-start gap-3 p-4 transition-colors hover:bg-emerald-50 ${index !== activeCampaigns.length - 1 ? "border-b" : ""
+                          }`}
                       >
                         <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-600 group-hover:bg-emerald-200">
                           <Heart className="h-5 w-5" />
@@ -438,9 +441,8 @@ const Dashboard = () => {
                   {userApplications.map((application, index) => (
                     <Link key={application._id} href={`/dashboard/applications/${application._id}`}>
                       <div
-                        className={`group flex items-start gap-3 p-4 transition-colors hover:bg-emerald-50 ${
-                          index !== userApplications.length - 1 ? "border-b" : ""
-                        }`}
+                        className={`group flex items-start gap-3 p-4 transition-colors hover:bg-emerald-50 ${index !== userApplications.length - 1 ? "border-b" : ""
+                          }`}
                       >
                         <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-600 group-hover:bg-emerald-200">
                           {application.status === "approved" ? (
@@ -477,7 +479,7 @@ const Dashboard = () => {
                   </div>
                   <h3 className="mt-4 text-sm font-medium text-gray-900">No applications</h3>
                   <p className="mt-1 text-sm text-gray-500">You haven&apos;t submitted any applications yet.</p>
-                  <Link href="/dashboard/applications"><Button variant="outline" className="mt-4 border-emerald-200 text-emerald-700 hover:bg-emerald-50">
+                  <Link href="/dashboard/applications/new"><Button variant="outline" className="mt-4 border-emerald-200 text-emerald-700 hover:bg-emerald-50">
                     <FileText className="mr-2 h-4 w-4" />
                     Create Application
                   </Button></Link>
@@ -515,22 +517,19 @@ const Dashboard = () => {
                   {notifications.map((notification, index) => (
                     <Link key={notification._id} href={`/dashboard/notifications`}>
                       <div
-                        className={`group flex items-start gap-3 p-4 transition-colors hover:bg-emerald-50 ${
-                          !notification.isRead ? "bg-emerald-50" : ""
-                        } ${index !== notifications.length - 1 ? "border-b" : ""}`}
+                        className={`group flex items-start gap-3 p-4 transition-colors hover:bg-emerald-50 ${!notification.isRead ? "bg-emerald-50" : ""
+                          } ${index !== notifications.length - 1 ? "border-b" : ""}`}
                       >
                         <div
-                          className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full ${
-                            !notification.isRead ? "bg-emerald-200 text-emerald-700" : "bg-emerald-100 text-emerald-600"
-                          } group-hover:bg-emerald-200`}
+                          className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full ${!notification.isRead ? "bg-emerald-200 text-emerald-700" : "bg-emerald-100 text-emerald-600"
+                            } group-hover:bg-emerald-200`}
                         >
                           <Bell className="h-5 w-5" />
                         </div>
                         <div className="flex-1">
                           <h3
-                            className={`font-medium ${
-                              !notification.isRead ? "text-emerald-800" : "text-gray-900"
-                            } group-hover:text-emerald-700`}
+                            className={`font-medium ${!notification.isRead ? "text-emerald-800" : "text-gray-900"
+                              } group-hover:text-emerald-700`}
                           >
                             {notification.title}
                           </h3>
