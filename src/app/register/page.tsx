@@ -77,7 +77,7 @@ const RegisterPage = () => {
                   <Input
                     id="fullName"
                     name="fullName"
-                    placeholder="John Doe"
+                    placeholder="Ahmad Hassan"
                     className="pl-10 border-gray-200 focus-visible:ring-emerald-500"
                     value={form.fullName}
                     onChange={handleChange}
