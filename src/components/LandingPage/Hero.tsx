@@ -85,6 +85,7 @@ const Hero = () => {
         </div>
 
         {/* Enhanced impact statistics */}
+        {/* Impact overview with generalized metrics */}
         <div className="mt-20 relative">
           {/* Decorative top border */}
           <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
@@ -100,8 +101,8 @@ const Hero = () => {
                     <HandHeart className="h-8 w-8" />
                   </div>
                 </div>
-                <p className="mt-6 text-4xl font-bold bg-gradient-to-br from-emerald-800 to-emerald-600 bg-clip-text text-transparent">₦250K+</p>
-                <p className="mt-2 text-base text-gray-600 font-medium">Funds Raised</p>
+                <p className="mt-6 text-xl font-semibold text-emerald-900">Significant Support</p>
+                <p className="mt-2 text-base text-gray-600 font-medium text-center">Ongoing contributions are driving real impact</p>
               </div>
 
               <div className="flex flex-col items-center transition-transform duration-300 hover:transform hover:scale-105">
@@ -111,8 +112,8 @@ const Hero = () => {
                     <Users className="h-8 w-8" />
                   </div>
                 </div>
-                <p className="mt-6 text-4xl font-bold bg-gradient-to-br from-emerald-800 to-emerald-600 bg-clip-text text-transparent">15K+</p>
-                <p className="mt-2 text-base text-gray-600 font-medium">Lives Impacted</p>
+                <p className="mt-6 text-xl font-semibold text-emerald-900 text-center">Growing Community</p>
+                <p className="mt-2 text-base text-gray-600 font-medium text-center">Many lives have been positively influenced</p>
               </div>
 
               <div className="flex flex-col items-center transition-transform duration-300 hover:transform hover:scale-105">
@@ -122,12 +123,13 @@ const Hero = () => {
                     <Globe className="h-8 w-8" />
                   </div>
                 </div>
-                <p className="mt-6 text-4xl font-bold bg-gradient-to-br from-emerald-800 to-emerald-600 bg-clip-text text-transparent">12</p>
-                <p className="mt-2 text-base text-gray-600 font-medium">Countries Served</p>
+                <p className="mt-6 text-xl font-semibold text-emerald-900">Focused in Nigeria</p>
+                <p className="mt-2 text-base text-gray-600 font-medium text-center">Our impact is currently centered within Nigeria</p>
               </div>
             </div>
           </div>
         </div>
+
       </div>
 
       {/* Enhanced decorative bottom wave with multi-layer effect */}
