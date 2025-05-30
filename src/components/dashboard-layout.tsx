@@ -19,6 +19,8 @@ import {
   Settings,
   HelpCircle,
   Search,
+  // Phone,
+  // MessageCircle,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
@@ -32,6 +34,13 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog"
 import { SERVER_URL } from "@/constants"
 
 interface DashboardLayoutProps {
@@ -45,6 +54,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [unreadNotifications, setUnreadNotifications] = useState(0)
   const [searchQuery, setSearchQuery] = useState("")
+  const [isSupportModalOpen, setIsSupportModalOpen] = useState(false)
 
   useEffect(() => {
     const fetchUnreadNotifications = async () => {
@@ -72,6 +82,10 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
   const handleLogout = () => {
     logout()
     router.push("/login")
+  }
+
+  const handleSupportClick = () => {
+    setIsSupportModalOpen(true)
   }
 
   const isAdmin = user?.role === "admin" || user?.role === "superadmin"
@@ -474,7 +488,11 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
                   <div>
                     <h4 className="text-sm font-medium text-emerald-800">Need help?</h4>
                     <p className="mt-1 text-xs text-emerald-600">Contact our support team</p>
-                    <Button variant="link" className="mt-1 h-auto p-0 text-xs text-emerald-700">
+                    <Button 
+                      variant="link" 
+                      className="mt-1 h-auto p-0 text-xs text-emerald-700"
+                      onClick={handleSupportClick}
+                    >
                       Get Support
                     </Button>
                   </div>
@@ -496,6 +514,57 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
         {/* Main Content */}
         <main className="flex-1 overflow-auto bg-gray-50  sm:p-3 md:p-6">{children}</main>
       </div>
+
+      {/* Support Modal */}
+      <Dialog open={isSupportModalOpen} onOpenChange={setIsSupportModalOpen}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-2 text-emerald-800">
+              <HelpCircle className="h-5 w-5" />
+              Contact Support
+            </DialogTitle>
+            <DialogDescription>
+              Need assistance with Zakat? Our support team is ready to help you.
+            </DialogDescription>
+          </DialogHeader>
+          
+          <div className="space-y-4">
+            <div className="text-center">
+              <p className="text-lg font-semibold text-gray-900 mb-4">
+                👉 Call/Chat with us now:
+              </p>
+              
+              <div className="space-y-3">
+                <div className="flex items-center justify-center gap-3 p-3 bg-emerald-50 rounded-lg">
+                  {/* <Phone className="h-5 w-5 text-emerald-600" /> */}
+                  <a 
+                    href="tel:07011193014" 
+                    className="text-lg font-medium text-emerald-700 hover:text-emerald-800 transition-colors"
+                  >
+                    📱 07011193014
+                  </a>
+                </div>
+                
+                <div className="flex items-center justify-center gap-3 p-3 bg-emerald-50 rounded-lg">
+                  {/* <MessageCircle className="h-5 w-5 text-emerald-600" /> */}
+                  <a 
+                    href="tel:09066103108" 
+                    className="text-lg font-medium text-emerald-700 hover:text-emerald-800 transition-colors"
+                  >
+                    📱 09066103108
+                  </a>
+                </div>
+              </div>
+            </div>
+            
+            <div className="pt-4 border-t">
+              <p className="text-sm text-gray-600 text-center">
+                Our support team is available to assist you with any questions or issues you may have.
+              </p>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   )
 }
